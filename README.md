@@ -4,7 +4,7 @@ A Minecraft Java Edition 1.21.11 datapack project for a random soul-fire lightni
 
 ## Current stage
 
-Stage 5: core marker management, 6-tick pulse, and moving random-direction main chains.
+Stage 6: core marker management, 6-tick pulse, and jagged moving random-direction main chains.
 
 This stage includes:
 
@@ -27,6 +27,7 @@ This stage includes:
 - `soul_lightning:chain/init_random_direction`
 - `soul_lightning:chain/tick`
 - `soul_lightning:chain/move`
+- `soul_lightning:chain/jitter`
 - `soul_lightning:chain/list`
 
 Current behavior:
@@ -37,10 +38,13 @@ Current behavior:
 - Each burst still shows the simple `minecraft:soul_fire_flame` core pulse.
 - Each burst also spawns 12 temporary `slc.chain` marker entities.
 - Every chain marker receives a random yaw from 0 to 359 degrees and a random pitch from -25 to 25 degrees.
-- Each chain marker now draws a small `minecraft:soul_fire_flame` particle node every tick.
-- Each chain marker moves forward 0.55 blocks per tick along its own local direction.
-- Stage 5 chain markers live for 10 ticks and then self-delete.
-- No random jitter or branching is implemented yet, so each chain is still a short straight ray.
+- Each chain marker draws a small `minecraft:soul_fire_flame` particle node every tick.
+- Before each movement step, each chain marker randomly bends its current direction.
+- Yaw jitter is `-18..18` degrees per step.
+- Pitch jitter is `-7..7` degrees per step and clamped to `-35..35` degrees.
+- Each chain marker moves forward 0.55 blocks per tick along its updated local direction.
+- Stage 6 chain markers live for 10 ticks and then self-delete.
+- No branching is implemented yet.
 
 ## Test steps
 
@@ -54,7 +58,7 @@ Current behavior:
 3. Expected chat output:
 
 ```text
-[Soul Lightning Chain] Loaded stage 5 moving chain skeleton.
+[Soul Lightning Chain] Loaded stage 6 jagged chain skeleton.
 ```
 
 4. Place a core marker at your current position:
@@ -63,7 +67,7 @@ Current behavior:
 /function soul_lightning:core/place
 ```
 
-5. After placement, you should see small soul fire flame chains shooting outward from the core roughly every 0.3 seconds.
+5. After placement, you should see small soul fire flame chains shooting outward from the core roughly every 0.3 seconds. They should now look less like straight rays and more like jagged, randomly bending lightning paths.
 
 6. Count current core markers:
 
@@ -103,6 +107,5 @@ If you run `/reload` again after uninstalling, the objectives should be recreate
 
 Later stages will add:
 
-1. Random jitter to turn straight rays into jagged lightning paths.
-2. Random branching.
-3. Performance protection and configuration functions.
+1. Random branching.
+2. Performance protection and configuration functions.
