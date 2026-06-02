@@ -12,4 +12,4 @@ scoreboard objectives remove slc.age
 scoreboard objectives remove slc.max_age
 scoreboard objectives remove slc.depth
 
-say [Soul Lightning Chain] Uninstalled stage 4 random chain skeleton state.
+say [Soul Lightning Chain] Uninstalled stage 5 moving chain skeleton state.
