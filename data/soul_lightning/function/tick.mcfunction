@@ -1,3 +1,4 @@
 # Soul Lightning Chain Datapack
-# Stage 1 tick hook.
-# Intentionally empty: later stages will dispatch core and chain systems here.
+# Stage 3 tick hook: update all core markers.
+
+execute as @e[type=minecraft:marker,tag=slc.core] at @s run function soul_lightning:core/tick
