@@ -4,7 +4,7 @@ A Minecraft Java Edition 1.21.11 datapack project for a random soul-fire lightni
 
 ## Current stage
 
-Stage 4: core marker management, 6-tick pulse, and random-direction main chain markers.
+Stage 5: core marker management, 6-tick pulse, and moving random-direction main chains.
 
 This stage includes:
 
@@ -21,10 +21,12 @@ This stage includes:
 - `soul_lightning:core/tick`
 - `soul_lightning:core/burst`
 - `soul_lightning:particle/core_pulse`
+- `soul_lightning:particle/chain_node`
 - `soul_lightning:chain/summon_12_main`
 - `soul_lightning:chain/summon_main`
 - `soul_lightning:chain/init_random_direction`
 - `soul_lightning:chain/tick`
+- `soul_lightning:chain/move`
 - `soul_lightning:chain/list`
 
 Current behavior:
@@ -35,8 +37,10 @@ Current behavior:
 - Each burst still shows the simple `minecraft:soul_fire_flame` core pulse.
 - Each burst also spawns 12 temporary `slc.chain` marker entities.
 - Every chain marker receives a random yaw from 0 to 359 degrees and a random pitch from -25 to 25 degrees.
-- Stage 4 chain markers do not move and do not draw chain particles yet; they only age for 6 ticks and then self-delete.
-- No chain movement, jitter, or branching is implemented yet.
+- Each chain marker now draws a small `minecraft:soul_fire_flame` particle node every tick.
+- Each chain marker moves forward 0.55 blocks per tick along its own local direction.
+- Stage 5 chain markers live for 10 ticks and then self-delete.
+- No random jitter or branching is implemented yet, so each chain is still a short straight ray.
 
 ## Test steps
 
@@ -50,7 +54,7 @@ Current behavior:
 3. Expected chat output:
 
 ```text
-[Soul Lightning Chain] Loaded stage 4 random chain skeleton.
+[Soul Lightning Chain] Loaded stage 5 moving chain skeleton.
 ```
 
 4. Place a core marker at your current position:
@@ -59,7 +63,7 @@ Current behavior:
 /function soul_lightning:core/place
 ```
 
-5. After placement, you should see a small soul fire flame pulse at the core roughly every 0.3 seconds.
+5. After placement, you should see small soul fire flame chains shooting outward from the core roughly every 0.3 seconds.
 
 6. Count current core markers:
 
@@ -73,7 +77,7 @@ Current behavior:
 /function soul_lightning:chain/list
 ```
 
-Because chain markers currently live for only 6 ticks, the count may be `0` if you run the command between bursts. If you catch the burst window, you may see up to about `12` per active core.
+Because chain markers live for 10 ticks and a new burst happens every 6 ticks, the count may be around 12 to 24 per active core depending on timing.
 
 8. Remove the nearest core marker:
 
@@ -99,6 +103,6 @@ If you run `/reload` again after uninstalling, the objectives should be recreate
 
 Later stages will add:
 
-1. Chain movement with soul fire particles.
-2. Random jitter and branching.
+1. Random jitter to turn straight rays into jagged lightning paths.
+2. Random branching.
 3. Performance protection and configuration functions.
