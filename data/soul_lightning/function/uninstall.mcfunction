@@ -7,5 +7,9 @@ kill @e[tag=slc.branch]
 scoreboard objectives remove slc.timer
 scoreboard objectives remove slc.state
 scoreboard objectives remove slc.core_id
+scoreboard objectives remove slc.chain_id
+scoreboard objectives remove slc.age
+scoreboard objectives remove slc.max_age
+scoreboard objectives remove slc.depth
 
-say [Soul Lightning Chain] Uninstalled stage 2 core skeleton state.
+say [Soul Lightning Chain] Uninstalled stage 4 random chain skeleton state.
