@@ -1,5 +1,4 @@
-# Small pulse at the current core position.
-# Execution context: at one core marker.
-# Kept subtle so the visible effect is the upward chain pulse, not a ground flame cloud.
+# Subtle origin pulse for the long upward lightning trunk effect.
+# Spread a little wider so trunks do not feel like they all start from exactly one pixel.
 
-particle minecraft:soul_fire_flame ~ ~0.25 ~ 0.18 0.12 0.18 0.0 4 normal
+particle minecraft:soul_fire_flame ~ ~0.25 ~ 0.35 0.10 0.35 0.0 5 normal
