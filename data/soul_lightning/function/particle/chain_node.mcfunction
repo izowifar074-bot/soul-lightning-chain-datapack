@@ -1,4 +1,4 @@
-# Sparse soul fire particle node for a moving chain marker.
-# Execution context: at one chain marker.
+# Particle node for a long sky-reaching lightning trunk.
+# Slightly brighter than stage 8, but still sparse enough not to become a ground flame cloud.
 
-particle minecraft:soul_fire_flame ~ ~ ~ 0.03 0.03 0.03 0.0 2 normal
+particle minecraft:soul_fire_flame ~ ~ ~ 0.015 0.015 0.015 0.0 3 normal
