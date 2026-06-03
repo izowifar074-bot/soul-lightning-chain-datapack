@@ -1,7 +1,5 @@
-# Try to spawn one branch from the current chain marker.
-# Execution context: as and at one marker tagged slc.chain.
-# Branch chance uses a 0..99 roll; default threshold is #branch_chance = 2, about 3%.
-# Maximum branch depth is 1 for the tuned sparse upward pulse style.
+# Try to spawn one sparse branch from the current lightning trunk.
+# Branching is rare in stage 9 because the main visual should be long sky-reaching trunks.
 
 execute if score @s slc.depth matches 1.. run return 0
 execute if score #chain_count slc.state >= #max_chain_count slc.state run return 0
