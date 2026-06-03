@@ -1,5 +1,4 @@
-# Move the current chain marker along its own local forward direction.
-# Execution context: as and at one chain marker.
-# Tuned slower for pulse-like upward arcs.
+# Move the current lightning trunk along its own local forward direction.
+# Longer step distance creates long sky-reaching lightning paths.
 
-tp @s ^ ^ ^0.28
+tp @s ^ ^ ^0.48
