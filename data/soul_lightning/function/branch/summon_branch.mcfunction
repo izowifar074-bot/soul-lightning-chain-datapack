@@ -1,4 +1,4 @@
-# Spawn one branch marker from the current chain marker.
+# Spawn one sparse side branch from the current lightning trunk.
 # Execution context: as and at the parent chain marker.
 
 execute store result score #parent_yaw slc.tmp run data get entity @s Rotation[0] 1
@@ -8,7 +8,7 @@ scoreboard players add #next_chain_id slc.state 1
 summon minecraft:marker ~ ~ ~ {Tags:["slc.chain","slc.branch","slc.new_branch"]}
 scoreboard players operation @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] slc.chain_id = #next_chain_id slc.state
 scoreboard players set @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] slc.age 0
-scoreboard players set @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] slc.max_age 5
+scoreboard players set @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] slc.max_age 12
 scoreboard players operation @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] slc.depth = @s slc.depth
 scoreboard players add @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] slc.depth 1
 execute as @e[type=minecraft:marker,tag=slc.new_branch,sort=nearest,limit=1] run function soul_lightning:branch/init_from_parent
