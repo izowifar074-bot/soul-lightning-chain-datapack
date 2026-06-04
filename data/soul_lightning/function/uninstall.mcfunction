@@ -13,4 +13,4 @@ scoreboard objectives remove slc.max_age
 scoreboard objectives remove slc.depth
 scoreboard objectives remove slc.tmp
 
-say [Soul Lightning Chain] Uninstalled stage 7 branching chain system state.
+say [Soul Lightning Chain] Uninstalled stage 10 jagged sky lightning system state.
